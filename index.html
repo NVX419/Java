@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loai Perfumes | Le Male Elixir</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* PAGE LOAD */
+body{
+    background:#000;
+    color:#fff;
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s ease;
+}
+body.loaded{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:25px 15px;
+    border-bottom:1px solid #d4af37;
+}
+header img{
+    width:90px;
+}
+header h1{
+    color:#d4af37;
+    font-size:26px;
+    margin-top:10px;
+    letter-spacing:1px;
+}
+header span{
+    color:#aaa;
+    font-size:13px;
+}
+
+/* NAV */
+nav{
+    margin-top:15px;
+}
+nav a{
+    color:#d4af37;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:500;
+    font-size:14px;
+}
+
+/* HERO */
+.hero{
+    padding:50px 20px;
+    text-align:center;
+}
+.hero img{
+    width:220px;
+    margin-bottom:25px;
+    filter:drop-shadow(0 0 25px #d4af37);
+}
+.hero h2{
+    font-size:32px;
+    color:#d4af37;
+}
+.hero p{
+    color:#ccc;
+    margin:15px 0;
+}
+.price{
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+/* BUTTON */
+.btn{
+    background:linear-gradient(135deg,#d4af37,#b8962e);
+    color:#000;
+    border:none;
+    padding:14px 32px;
+    border-radius:30px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* SECTION */
+.section{
+    padding:50px 20px;
+    text-align:center;
+}
+.section h3{
+    color:#d4af37;
+    font-size:28px;
+    margin-bottom:25px;
+}
+.details{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+.details div{
+    background:#111;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #222;
+}
+
+/* CTA */
+.cta{
+    background:#111;
+    padding:50px 20px;
+    text-align:center;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:13px;
+    color:#777;
+    border-top:1px solid #222;
+}
+
+/* SCROLL ANIMATION */
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:.8s ease;
+}
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+    .hero{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:60px;
+        text-align:left;
+    }
+    .hero img{
+        width:320px;
+    }
+    .details{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="fade">
+    <img src="logo.jpg" alt="Loai Perfumes">
+    <h1>Loai Perfumes</h1>
+    <span>Luxury Fragrance House</span>
+
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#details">العطر</a>
+        <a href="#buy">شراء</a>
+    </nav>
+</header>
+
+<section id="home" class="hero fade">
+    <img src="perfume.jpg" alt="Le Male Elixir">
+
+    <div>
+        <h2>Le Male Elixir</h2>
+        <p>عطر رجالي فاخر بتركيبة دافئة وجذابة</p>
+        <div class="price">350 جنيه</div>
+
+        <button class="btn" onclick="buy()">
+            اطلب عبر واتساب
+        </button>
+    </div>
+</section>
+
+<section id="details" class="section fade">
+    <h3>تفاصيل العطر</h3>
+    <div class="details">
+        <div>🔥 ثبات طويل</div>
+        <div>🍯 فانيليا وعسل</div>
+        <div>🌲 عنبر وخشب</div>
+        <div>💎 مناسب للسهرات</div>
+    </div>
+</section>
+
+<section id="buy" class="cta fade">
+    <h3>جاهز للتجربة؟</h3>
+    <p>اطلب الآن واستمتع بعطر فاخر</p>
+    <br>
+    <button class="btn" onclick="buy()">تواصل واتساب</button>
+</section>
+
+<footer class="fade">
+    © 2025 Loai Perfumes – Crafted by Human
+</footer>
+
+<script>
+// LOAD
+window.addEventListener("load",()=>{
+    document.body.classList.add("loaded");
+});
+
+// SCROLL
+const obs=new IntersectionObserver(e=>{
+    e.forEach(i=>{
+        if(i.isIntersecting){
+            i.target.classList.add("show");
+        }
+    });
+},{threshold:.2});
+
+document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
+
+// WHATSAPP
+function buy(){
+    window.open("https://api.whatsapp.com/send/?phone=201011580685&text&type=phone_number&app_absent=0&wame_ctl=1","_blank");
+}
+</script>
+
+</body>
+</html>
